@@ -1,63 +1,74 @@
+<h1>Codigo HTML</h1>
+
 <?php
-//*Definir una clase para comenzar , el nombre de la clase simpre inicia con mayuscula*/
-   class Book{
-     //*PROPIEDADES: caracteristicas de nuestros objetos
-     //*METODOS: Definen el comportamiento de nuestros objetos 
-     //*Metodo constructor recibe nuestras propiedades
-     //*¿Que es lo que puede hacer nuestro objeto?
-      public function __construct( 
-        private string $author,
-        private string $title, 
-        private float $price,  
-        private int $stock,  
-        private int $id){ //echo "Soy una instancia de Book";
-     }
+  echo "<h1>Codigo PHP</h1>";
+  print("Hola");
+  
+  //$nombre = "Victor Robles";
 
-     public function getInfo(){
-          $info ="<b>{$this->title}</b> escrito por: <i> {$this->author}</i> <br> 
-          precio: {$this->price }      
-          <br> ID:{$this->id}  <br>";
+  $nombre=existeParametro("nombre", false); 
 
-         //*La palabra reservada this hace referencia al objeto que se esta ejecutando el metodo en ese momenton this haria referencia a book1 o book2
-           if($this->stock >0){
-               $info .= "Piezas disponibles: <span style='color:green'>{$this->stock}</span>";    
-       }else{
-            $info .= " <span style='color:red'>No disponible</span>";    
-       }
-         
-        return $info;               
 
-        }     
-         
-         
+  $texto = "Repaso de PHP con $nombre";
+   $altura = existeParametro("altura", true); 
+
+  
+   if(isset($_GET["altura"])){
+    $altura = $_GET["altura"];    
+   }else{
+    $altura=180;
    }
 
-   //*Instancia de la clase Book
+  $textoFinal = "<h1>".$texto. ", su altura es :" .$altura. "</h1>";
 
-   $book1 = new Book(
-      'George O.',
-      'Rebelion en la granja',
-      199.90,
-      0,
-      1
-   );
+  echo $textoFinal;
+  echo $textoFinal;
+  echo $textoFinal;
 
-  
-   echo $book1-> getInfo();
-  
-   $book2 = new Book(
-      'Allison',
-      'El arte de tener la razon',
-      150.00,
-      10,
-      2
-   );
+  //Contenido original mas lo que se pone aqui 
+  $textoFinal .="Te eh troleado my bro";
+  echo $textoFinal;
 
-  echo "<br> <br>";
-  echo $book2 -> getInfo();
+  //**GET, lo que se va a pasar por la url 
+  echo "<hr>";  
+  $nombre=existeParametro("nombre", false); 
+  //*
+  if($altura >= 180){
+    echo  '<h3 style="background:green; color:white;">Eres una persona alta</h3>';
+  }else{
+    echo "<h3>Eres una persona bajita</h3>";
+  }
 
-   //*Ingresar a las propiedades
-//    echo $book2 -> title;
-//    echo "<br>";
-//    echo $book2 -> author;
+   function existeParametro($paramtro, $numero){
+      
+     if(isset($_GET[$paramtro])){
+          $nombre = $_GET[$paramtro];    
+        }else{ 
+           $valor = "Texto defecto";
+           if($numero ){ 
+            $valor = 18;
+          }
+        }       
+      return $valor;
+
+      //*ARRAYS
+
+      $personas =["Victor", "Fran", "Paco"];
+      echo $personas[1];
+
+      
+      
+  }
 ?>
+
+<h1>Listado</h1>
+<ul>
+    <?php
+        $personas =["Victor", "Fran", "Paco"];
+        echo $personas[1];
+  
+        foreach($personas as $nombre){
+            echo "<li>$nombre</li>";
+        }
+    ?>
+</ul>

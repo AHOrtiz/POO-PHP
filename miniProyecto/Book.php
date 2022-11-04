@@ -1,5 +1,3 @@
-
-
 <?php
 //*Definir una clase para comenzar , el nombre de la clase simpre inicia con mayuscula*/
    class Book{
@@ -8,11 +6,11 @@
      //*Metodo constructor recibe nuestras propiedades
      //*¿Que es lo que puede hacer nuestro objeto?
       public function __construct( 
-        public string $author,
-        public string $title, 
-        public float $price,  
-        public int $stock,  
-        public int $id){ //echo "Soy una instancia de Book";
+        private string $author,
+        private string $title, 
+        private float $price,  
+        private int $stock,  
+        private int $id){ //echo "Soy una instancia de Book";
      }
 
      public function getInfo(){
@@ -20,17 +18,16 @@
           precio: {$this->price }      
           <br> ID:{$this->id}  <br>";
 
+         //*La palabra reservada this hace referencia al objeto que se esta ejecutando el metodo en ese momenton this haria referencia a book1 o book2
            if($this->stock >0){
                $info .= "Piezas disponibles: <span style='color:green'>{$this->stock}</span>";    
        }else{
             $info .= " <span style='color:red'>No disponible</span>";    
        }
          
-        return $info;
-               
+        return $info;               
 
-        }
-       
+        }     
          
          
    }
@@ -44,6 +41,8 @@
       0,
       1
    );
+
+  
    echo $book1-> getInfo();
   
    $book2 = new Book(
@@ -53,8 +52,9 @@
       10,
       2
    );
-  
 
+  echo "<br> <br>";
+  echo $book2 -> getInfo();
 
    //*Ingresar a las propiedades
 //    echo $book2 -> title;
